@@ -36,4 +36,4 @@ Examples to consider:
    - to a WAB square such as TL05
      
 ### pyubx2
-Rather than reinvent wheels, we simply levearage existing libraries such as https://pypi.org/project/pyubx2/ for the message encode/decode functionality.
+Rather than reinvent wheels, we simply leverage existing libraries such as https://pypi.org/project/pyubx2/ for the message encode/decode functionality.
