@@ -1,0 +1,40 @@
+For Debian trixie, add the clause described by lines 9-20 in the fragment
+below:
+
+
+user@hostname:/usr/share/wireplumber/wireplumber.conf.d$ cat alsa-vm.conf
+# ALSA node property overrides for virtual machine hardware
+
+monitor.alsa.rules = [
+  {
+    matches = [
+      {
+        device.name = "alsa_card.usb-BurrBrown_from_Texas_Instruments_USB_AUDIO_CODEC-00"
+      }
+    ]
+    actions = {
+      update-props = {
+	device.disabled = true
+      }
+    }
+  }
+  # Generic PCI cards on any VM type
+  {
+    matches = [
+      {
+        node.name = "~alsa_input.pci.*"
+        cpu.vm.name = "~.*"
+      }
+      {
+        node.name = "~alsa_output.pci.*"
+        cpu.vm.name = "~.*"
+      }
+    ]
+    actions = {
+      update-props = {
+        api.alsa.period-size   = 1024
+        api.alsa.headroom      = 2048
+      }
+    }
+  }
+]
